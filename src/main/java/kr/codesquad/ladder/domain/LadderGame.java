@@ -8,6 +8,7 @@ import java.util.List;
 
 public class LadderGame {
     private Ladder ladder;
+    private Users users;
     private InputView inputView;
     private OutputView outputView;
 
@@ -18,15 +19,17 @@ public class LadderGame {
 
     public void run() {
         try {
-            List<String> userNames = inputView.getUserNames();
-            int stepNum = inputView.getStepNum();
+            users = new Users(inputView.getUserNames());
+            int lineNum = inputView.getStepNum();
 
-            ladder = new Ladder(stepNum, userNames);
+            ladder = new Ladder(users.size(), lineNum);
 
-            outputView.printLadder(ladder);
+            outputView.printLadder(ladder, users);
 
         } catch (IOException | IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
+
+
 }

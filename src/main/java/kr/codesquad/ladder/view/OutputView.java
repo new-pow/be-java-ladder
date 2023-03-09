@@ -2,6 +2,9 @@ package kr.codesquad.ladder.view;
 
 import kr.codesquad.ladder.domain.Ladder;
 import kr.codesquad.ladder.domain.Line;
+import kr.codesquad.ladder.domain.Users;
+
+import java.util.List;
 
 public class OutputView {
 
@@ -13,8 +16,8 @@ public class OutputView {
         stringBuilder = new StringBuilder();
     }
 
-    public void printLadder(Ladder ladder) {
-        printUserNames(ladder);
+    public void printLadder(Ladder ladder , Users users) {
+        printUserNames(users);
         stringBuilder.append(NEW_LINE);
         printLadderForm(ladder);
         System.out.println(stringBuilder.toString());
@@ -28,11 +31,11 @@ public class OutputView {
         }
     }
 
-    private void printUserNames(Ladder ladder) {
-        stringBuilder.append(ladder.getAUser(0));
+    private void printUserNames(Users users) {
+        stringBuilder.append(users.getUserName(0));
 
-        for (int i = 1; i< ladder.getNumUser(); i++) {
-            stringBuilder.append(String.format("%6s", ladder.getAUser(i)));
+        for (int i = 1; i< users.size(); i++) {
+            stringBuilder.append(String.format("%6s", users.getUserName(i)));
         }
     }
 
