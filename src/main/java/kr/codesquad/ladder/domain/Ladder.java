@@ -31,4 +31,12 @@ public class Ladder {
             throw new IllegalArgumentException(String.format("[exception] 사다리 단계는 %d~%d 범위 내여야 합니다.", MIN_LINE_NUM, MAX_LINE_NUM));
         }
     }
+
+    public int getEndPoint(int startPoint) {
+        int endPoint = startPoint;
+        for (Line line : lines) {
+            endPoint += line.getNextLineIndex(endPoint);
+        }
+        return endPoint;
+    }
 }
