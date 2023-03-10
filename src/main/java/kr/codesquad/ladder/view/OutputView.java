@@ -44,4 +44,8 @@ public class OutputView {
             stringBuilder.append(step.getValidBridge(j)).append(LADDER_BAR);
         }
     }
+
+    public void print(String result) {
+        System.out.println(result + System.lineSeparator());
+    }
 }
