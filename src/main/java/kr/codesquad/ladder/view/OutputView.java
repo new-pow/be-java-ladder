@@ -16,30 +16,31 @@ public class OutputView {
         stringBuilder = new StringBuilder();
     }
 
-    public void printLadder(Ladder ladder , Users users) {
-        printUserNames(users);
-        stringBuilder.append(NEW_LINE);
+    public void printLadder(Ladder ladder , List<String> users, List<String> results) {
+        printPoint(users);
         printLadderForm(ladder);
+        printPoint(results);
         System.out.println(stringBuilder.toString());
     }
 
     private void printLadderForm(Ladder ladder) {
+        stringBuilder.append(NEW_LINE);
         for (int i = 0; i< ladder.getNumStep(); i++) {
-            stringBuilder.append(LADDER_BAR);
             getStringLadderALine(ladder.getAStep(i));
             stringBuilder.append(NEW_LINE);
         }
     }
 
-    private void printUserNames(Users users) {
-        stringBuilder.append(users.getUserName(0));
+    private void printPoint(List<String> points) {
+        stringBuilder.append(points.get(0));
 
-        for (int i = 1; i< users.size(); i++) {
-            stringBuilder.append(String.format("%6s", users.getUserName(i)));
+        for (int i = 1; i< points.size(); i++) {
+            stringBuilder.append(String.format("%6s", points.get(i)));
         }
     }
 
     private void getStringLadderALine(Line step) {
+        stringBuilder.append(LADDER_BAR);
         for (int j = 0; j< step.size(); j++) {
             stringBuilder.append(step.getValidBridge(j)).append(LADDER_BAR);
         }
