@@ -8,13 +8,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("User 생성, 예외 테스트")
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UserTest {
     // pobi,honux,crong,jk
     Users users;
 
-    @Test @Order(1)
-    @DisplayName("이름을 삽입했을 때, user가 해당 숫자만큼 생성")
+    @Test
+    @DisplayName("이름을 삽입했을 때, user가 해당 숫자만큼 생성되어야 한다.")
     void init() {
         List<String> givenNames = makeGivenNames("pobi,honux,crong,jk");
         users = new Users(givenNames);
@@ -22,8 +21,8 @@ class UserTest {
         assertThat(users.size()).isEqualTo(4);
     }
 
-    @Test @Order(2)
-    @DisplayName("이름이 5글자를 넘어갈 때 IllegalArgumentException 발생")
+    @Test
+    @DisplayName("이름이 5글자를 넘어갈 때, IllegalArgumentException 발생")
     public void whenOverLength() throws Exception{
         //given
         List<String> givenNames = makeGivenNames("pobi,honux,crong,jjjkkkkkk");
@@ -32,8 +31,8 @@ class UserTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test @Order(3)
-    @DisplayName("중복 이름 발생한 경우, 해당 이름은 제외")
+    @Test
+    @DisplayName("중복 이름 발생한 경우, 해당 이름은 제외하여 생성된다.")
     public void whenBlank() throws Exception{
         //given
         List<String> givenNames = makeGivenNames("pobi,honux,crong,jk,crong");
@@ -45,8 +44,8 @@ class UserTest {
         assertThat(users.size()).isEqualTo(4);
     }
 
-    @Test @Order(4)
-    @DisplayName("전달되는 인덱스에 따른 올바른 유저 이름 반환")
+    @Test
+    @DisplayName("유저 인덱스가 전달되었을 때, 올바른 유저 이름이 반환되어야 한다.")
     public void getUserNameTest() throws Exception {
         List<String> givenNames = makeGivenNames("pobi,honux,crong");
         Users users = new Users(givenNames);
@@ -54,8 +53,8 @@ class UserTest {
         assertThat(users.getUserName(0)).isEqualTo("pobi");
     }
 
-    @Test @Order(5)
-    @DisplayName("중복된 이름이 있을 때, 전달되는 인덱스에 따른 올바른 유저 이름 반환")
+    @Test
+    @DisplayName("중복된 이름이 있을 때에도 전달되는 인덱스에 따른 올바른 유저 이름 반환")
     public void whenDubplicateNameGetUserNameTest() throws Exception {
         List<String> givenNames = makeGivenNames("honux,pobi,pobi,crong,pobi");
         Users users = new Users(givenNames);
