@@ -68,6 +68,10 @@ public class LadderGame {
 
         return gameResultList;
     }
+
+    private void isValidGameData(int userNum, int resultNum) {
+        if (userNum!=resultNum) {
+            throw new IllegalArgumentException("[exception] 사용자와 결과 값의 크기는 같아야 합니다.");
         }
     }
 
