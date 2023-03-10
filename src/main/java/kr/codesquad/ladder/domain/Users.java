@@ -31,9 +31,15 @@ public class Users {
     public String getUserName(int order) {
         return userList.get(order).getName();
     }
+
+    public List<String> getAllUserNames() {
+        return userList.stream().map(User::getName).collect(Collectors.toList());
+    }
+
     private void isValidUserNum (int userNum) {
         if (userNum > MAX_USER_NUM || userNum < MIN_USER_NUM) {
             throw new IllegalArgumentException(String.format("[exception] 참여자 수는 %d~%d 범위 내여야 합니다.", MIN_USER_NUM, MAX_USER_NUM));
         }
     }
+
 }
