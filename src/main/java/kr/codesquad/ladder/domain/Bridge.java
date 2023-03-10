@@ -3,10 +3,10 @@ package kr.codesquad.ladder.domain;
 public enum Bridge {
     BRIDGE("------"), EMPTY("      ");
 
-    private String form;
+    private final String FORM;
 
     Bridge(String form) {
-        this.form = form;
+        this.FORM = form;
     }
 
     public static Bridge of(boolean plan) {
@@ -18,6 +18,6 @@ public enum Bridge {
 
     @Override
     public String toString() {
-        return form;
+        return FORM;
     }
 }
