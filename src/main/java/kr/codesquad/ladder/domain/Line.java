@@ -46,4 +46,19 @@ public class Line {
     public Bridge getValidBridge (int index) {
         return bridges.get(index);
     }
+
+    /**
+     * 왼쪽으로 갈 지 오른쪽으로 갈 지 반환
+     * */
+    public int getNextLineIndex(int startPoint) {
+        final int GO_LEFT = -1, GO_RIGHT = +1, GO_STREIGHT = 0;
+
+        if (startPoint < bridges.size()-1 && bridges.get(startPoint)==Bridge.BRIDGE) {
+            return GO_RIGHT;
+        }
+        if (startPoint > 0 && bridges.get(startPoint-1)==Bridge.BRIDGE) {
+            return GO_LEFT;
+        }
+        return GO_STREIGHT;
+    }
 }
