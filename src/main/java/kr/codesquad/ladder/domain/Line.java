@@ -10,11 +10,6 @@ public class Line {
     // 사다리 한 칸
     private List<Bridge> bridges;
 
-    public Line(int userNum) {
-        this.bridges = generateBlocks(RandomBoolean.generate(userNum));
-    }
-
-    // 테스트를 위한 생성자
     public Line(List<Boolean> booleanList) {
         this.bridges = generateBlocks(booleanList);
     }
